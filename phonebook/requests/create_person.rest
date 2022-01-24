@@ -1,0 +1,21 @@
+POST http://localhost:3001/api/persons
+Content-Type: application/json
+
+{
+    "name": "Dangis Kahn",
+    "number": "1-800-Call MAY"
+}
+
+###
+POST http://localhost:3001/api/persons
+Content-Type: application/json
+
+{
+    "name": "ding dosby",
+    "number": "777"
+}
+
+###
+POST http://localhost:3001/api/persons
+Content-Type: application/json
+

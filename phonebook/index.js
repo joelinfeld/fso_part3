@@ -1,6 +1,8 @@
 const express = require('express')
 const app = express()
 
+app.use(express.json())
+
 let persons = [
     {
     "name": "ding dosby",
@@ -24,7 +26,6 @@ let persons = [
     }
 ]
 
-let info = 
 app.get('/', (request, response) => {
     response.send('<h1>Hello World!</h1>')
 })
@@ -52,6 +53,24 @@ app.delete('/api/persons/:id', (request, response) => {
     
     response.status(204).end()
 })
+
+app.post('/api/persons/', (request, response) => {
+    if (!request.body) return response.status(400).json({error: 'no entry given'})
+    if (!request.body.name) return response.status(400).json({error: 'no name entered'})
+    if (!request.body.number) return response.status(400).json({error: 'no number entered'})
+    if (persons.find(person => person.name === request.body.name || person.number === request.body.number)) {
+        return response.status(400).json({error: 'name or number already exists'})
+    }
+    const person = {
+        'name': request.body.name,
+        'number': request.body.number,
+        'id': Math.round(Math.random() * 100000) 
+    }
+    persons.concat(person)
+    console.log(person)
+    response.json(person)
+})
+
 const PORT = 3001
 
 app.listen(PORT, () => {
