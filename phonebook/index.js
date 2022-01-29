@@ -1,7 +1,13 @@
 const express = require('express')
 const app = express()
+var morgan = require('morgan')
 
 app.use(express.json())
+app.use(morgan(':method :url :status :res[content-length] - :response-time ms :content'))
+
+morgan.token('content', (req, res) => {
+    return JSON.stringify(req.body)
+})
 
 let persons = [
     {
@@ -55,7 +61,7 @@ app.delete('/api/persons/:id', (request, response) => {
 })
 
 app.post('/api/persons/', (request, response) => {
-    if (!request.body) return response.status(400).json({error: 'no entry given'})
+    if (Object.keys(request.body).length === 0) response.status(400).json({error: 'no entry given'})
     if (!request.body.name) return response.status(400).json({error: 'no name entered'})
     if (!request.body.number) return response.status(400).json({error: 'no number entered'})
     if (persons.find(person => person.name === request.body.name || person.number === request.body.number)) {
