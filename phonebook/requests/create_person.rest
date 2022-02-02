@@ -10,7 +10,8 @@ POST http://localhost:3001/api/persons
 Content-Type: application/json
 
 {
-    "name": "ding dosby"
+    "name": "ding dosby",
+    "number": "1-800-Call MAY"
 }
 
 ###
