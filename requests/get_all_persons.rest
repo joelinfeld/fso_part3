@@ -1,5 +1,5 @@
 ### GET ALL TO SHOW
-GET http://localhost:3001/api/people
+GET https://crimson-dew-6792.fly.dev/api/people
 
 ### POST
 POST http://localhost:3001/api/people HTTP/1.1
