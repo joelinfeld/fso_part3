@@ -2,7 +2,7 @@
 GET https://crimson-dew-6792.fly.dev/api/people
 
 ### POST
-POST http://localhost:3001/api/people HTTP/1.1
+POST https://crimson-dew-6792.fly.dev/api/people HTTP/1.1
 content-type: application/json
 
 {
@@ -11,4 +11,30 @@ content-type: application/json
 }
 
 ### GET ALL TO TEST DELETE
-GET http://localhost:3001/api/people
+GET http://localhost:3001/api/info
+
+###
+POST http://localhost:3001/api/people HTTP/1.1
+content-type: application/json
+
+{
+    "name": "cucumbah",
+    "number": "1111111111"
+}
+
+###
+DELETE http://localhost:3001/api/people/777777
+
+###
+POST http://localhost:3001/api/people HTTP/1.1
+content-type: application/json
+
+{
+    "name": "blogger",
+    "number": "138427903523750"
+}
+
+
+###
+GET http://localhost:3001/api/people/63fd0d85089400ada940f75b
+
